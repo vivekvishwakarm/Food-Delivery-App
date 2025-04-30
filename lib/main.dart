@@ -1,14 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-
-import 'View/Onboarding/onboarding.dart';
+import 'package:food_delivery_app/splash_screen.dart';
 import 'Widget/app_constant.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Stripe.publishableKey = publishableKey;
+  await Stripe.instance.applySettings();
   await Firebase.initializeApp();
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
   runApp(const MyApp());
 }
 
@@ -25,8 +27,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const Onboarding(),
-      //   home: const AdminLogin()
+      home: const SplashScreen(),
     );
   }
 }

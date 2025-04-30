@@ -1,7 +1,5 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-
-import '../utils/colors.dart';
+import 'package:food_delivery_app/utils/colors.dart';
 import 'Home/home_screen.dart';
 import 'Order/order_screen.dart';
 import 'Profile/profile_screen.dart';
@@ -37,13 +35,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      bottomNavigationBar: CurvedNavigationBar(
-        height: height*0.07,
-        color: black,
-        backgroundColor: Colors.white,
-        animationDuration: const Duration(milliseconds: 500),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: white,
+        selectedItemColor: buttonColor,
+        unselectedItemColor: Colors.grey,
+        currentIndex: currentTabIndex,
+        type: BottomNavigationBarType.fixed,
+        elevation: 1,
         onTap: (index) {
           setState(
             () {
@@ -51,22 +50,34 @@ class _BottomNavBarState extends State<BottomNavBar> {
             },
           );
         },
-        items: [
-          Icon(
-            Icons.home_outlined,
-            color: white,
+        items: const [
+          BottomNavigationBarItem(
+            label: 'Home',
+            icon: Icon(
+              Icons.home_outlined,
+              // color: black,
+            ),
           ),
-          Icon(
-            Icons.shop_outlined,
-            color: white,
+          BottomNavigationBarItem(
+            label: 'Order',
+            icon: Icon(
+              Icons.shop_outlined,
+
+            ),
           ),
-          Icon(
-            Icons.wallet_outlined,
-            color: white,
+          BottomNavigationBarItem(
+            label: 'Wallet',
+            icon: Icon(
+              Icons.wallet_outlined,
+
+            ),
           ),
-          Icon(
-            Icons.person_outlined,
-            color: white,
+          BottomNavigationBarItem(
+            label: 'profile',
+            icon: Icon(
+              Icons.person_outlined,
+
+            ),
           ),
         ],
       ),

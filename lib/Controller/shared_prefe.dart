@@ -25,7 +25,7 @@ class SharedPreferenceHelper{
 
   Future<bool> saveUserWallet(String getUserWallet) async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.setString(userEmailKey, getUserWallet);
+    return prefs.setString(userWalletKey, getUserWallet);
   }
 
   Future<bool> saveUserProfile(String getUserProfile) async{

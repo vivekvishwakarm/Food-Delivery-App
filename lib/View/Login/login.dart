@@ -21,9 +21,7 @@ class _LoginState extends State<Login> {
   TextEditingController userPasswordController = TextEditingController();
 
   userLogin() async {
-    if (email != null &&
-        email.trim().isNotEmpty &&
-        password != null &&
+    if (email.trim().isNotEmpty &&
         password.trim().isNotEmpty) {
       try {
         await FirebaseAuth.instance.signInWithEmailAndPassword(
